@@ -24,7 +24,7 @@ module.exports.routes = {
   *                                                                          *
   ***************************************************************************/
 
-  '/': {
+  '/*': {
     view: 'pages/homepage'
   },
 
@@ -44,7 +44,10 @@ module.exports.routes = {
   //  ╠═╣╠═╝║  ║╣ ║║║ ║║╠═╝║ ║║║║║ ║ ╚═╗
   //  ╩ ╩╩  ╩  ╚═╝╝╚╝═╩╝╩  ╚═╝╩╝╚╝ ╩ ╚═╝
 
-
+  'GET /photo/list': 'photo/list',
+  'GET /photo/fetch/:id': 'photo/fetch',
+  'GET /photo/download/:id': 'photo/download',
+  'POST /photo/upload': 'photo/upload',
 
   //  ╦ ╦╔═╗╔╗ ╦ ╦╔═╗╔═╗╦╔═╔═╗
   //  ║║║║╣ ╠╩╗╠═╣║ ║║ ║╠╩╗╚═╗

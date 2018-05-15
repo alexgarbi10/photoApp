@@ -5,7 +5,7 @@
   // A set of basic code conventions (similar to a .jshintrc file) designed to
   // encourage quality and consistency across your Sails app's code base.
   // These rules are checked against automatically any time you run `npm test`.
-  // 
+  //
   // > An additional eslintrc override file is included in the `assets/` folder
   // > right out of the box.  This is specifically to allow for variations in acceptable
   // > global variables between front-end JavaScript code designed to run in the browser
@@ -23,13 +23,14 @@
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   "env": {
-    "node": true
+    "node": true,
+    "es6": true
   },
 
   "parserOptions": {
     "ecmaVersion": 8,
     "ecmaFeatures": {
-      "experimentalObjectRestSpread": true
+      "experimentalObjectRestSpread": true,
     }
   },
 
@@ -70,7 +71,7 @@
     "no-labels":                    ["error"],
     "no-mixed-spaces-and-tabs":     [2, "smart-tabs"],
     "no-redeclare":                 ["warn"],
-    "no-return-assign":             ["error", "always"],
+    "no-return-assign":             ["warn"],
     "no-sequences":                 ["error"],
     "no-trailing-spaces":           ["warn"],
     "no-undef":                     ["off"],
