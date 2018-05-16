@@ -1,10 +1,9 @@
 const HtmlWebpackPlugin = require('html-webpack-plugin');
-const VENDOR_LIBS = ['react', 'react-dom'];
 
 module.exports = {
   devtool: 'source-map',
   entry: {
-    entry: './assets/src/index.js'
+    entry: ['babel-polyfill', './assets/src/index.js']
   },
   output: {
     path: __dirname + '/.tmp/public',
@@ -20,6 +19,13 @@ module.exports = {
       {
         use: ['style-loader', 'css-loader'],
         test: /\.css$/
+      },
+      {
+        test: /\.(png|jpg|gif|svg|eot|ttf|woff|woff2)$/,
+        loader: 'url-loader',
+        options: {
+          limit: 10000
+        }
       }
     ]
   },

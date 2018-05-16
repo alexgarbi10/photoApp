@@ -44,10 +44,10 @@ module.exports.routes = {
   //  ╠═╣╠═╝║  ║╣ ║║║ ║║╠═╝║ ║║║║║ ║ ╚═╗
   //  ╩ ╩╩  ╩  ╚═╝╝╚╝═╩╝╩  ╚═╝╩╝╚╝ ╩ ╚═╝
 
-  'GET /photo/list': 'photo/list',
-  'GET /photo/fetch/:id': 'photo/fetch',
-  'GET /photo/download/:id': 'photo/download',
-  'POST /photo/upload': 'photo/upload',
+  'GET /api/photo/list': 'photo/list',
+  'GET /api/photo/fetch/:id': 'photo/fetch',
+  'GET /api/photo/download/:id': 'photo/download',
+  'POST /api/photo/upload': 'photo/upload',
 
   //  ╦ ╦╔═╗╔╗ ╦ ╦╔═╗╔═╗╦╔═╔═╗
   //  ║║║║╣ ╠╩╗╠═╣║ ║║ ║╠╩╗╚═╗

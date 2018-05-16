@@ -52,7 +52,7 @@ module.exports.http = {
 
     requestLogger: function(req, res, next) {
       console.log('User agent :: ', req.headers['user-agent']);
-      console.log("Requested :: ", req.method, 'path'.blue,':: '+ req.url, 'ip'.blue ,':: '+req.ip);
+      console.log('Requested :: ', req.method, 'path'.blue,':: '+ req.url, 'ip'.blue ,':: '+req.ip);
       return next();
     },
 

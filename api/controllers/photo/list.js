@@ -6,6 +6,11 @@
  */
 
 module.exports = async function list(req, res) {
-  const list = await Photo.find({ sort: 'createdAt DESC' });
-  return res.json({ list: list });
+  try {
+    const list = await Photo.find({ sort: 'createdAt DESC' });
+    return res.json(response);
+  } catch (error) {
+    const message = error.message || 'Unexpected error';
+    return res.serverError(message);
+  }
 };
