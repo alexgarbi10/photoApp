@@ -36,7 +36,7 @@ module.exports = function badRequest(optionalData) {
 
   // If no data was provided, use res.sendStatus().
   if (optionalData === undefined) {
-    sails.log.info('Ran custom response: res.badRequest()');
+    sails.log.info('Http 400 - Bad Request');
     return res.sendStatus(statusCodeToSet);
   }
   // Else if the provided data is an Error instance, if it has
@@ -44,7 +44,7 @@ module.exports = function badRequest(optionalData) {
   // response body to send.  Otherwise, send down its `.stack`,
   // except in production use res.sendStatus().
   else if (_.isError(optionalData)) {
-    sails.log.info('Custom response `res.badRequest()` called with an Error:', optionalData);
+    sails.log.info('Http 400 - Bad Request. Error:', optionalData);
 
     // If the error doesn't have a custom .toJSON(), use its `stack` instead--
     // otherwise res.json() would turn it into an empty dictionary.
@@ -54,7 +54,11 @@ module.exports = function badRequest(optionalData) {
         return res.sendStatus(statusCodeToSet);
       }
       else {
-        return res.status(statusCodeToSet).send(optionalData.stack);
+        if (req.wantsJSON) {
+          return res.status(statusCodeToSet).json(optionalData.stack);
+        } else {
+          return res.status(statusCodeToSet).send(optionalData.stack);
+        }
       }
     }
   }
