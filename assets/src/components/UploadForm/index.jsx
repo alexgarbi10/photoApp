@@ -27,6 +27,7 @@ export default class UploadForm extends Component {
     this.onFileChange = this.onFileChange.bind(this);
   };
 
+  // Custom form field validations
   validateName() {
     const { name } = this.props;
     const length = name.length;

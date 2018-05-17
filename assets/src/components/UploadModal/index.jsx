@@ -7,7 +7,9 @@ import { asyncRequest } from '../../api';
 export default class UploadModal extends Component {
   static propTypes = {
     showModal: PropTypes.bool.isRequired,
-    handleClose: PropTypes.func.isRequired
+    handleClose: PropTypes.func.isRequired,
+    handleError: PropTypes.func.isRequired,
+    handleMessage: PropTypes.func.isRequired
   };
 
   constructor(props) {
@@ -57,6 +59,7 @@ export default class UploadModal extends Component {
   };
 
   onFileUpload() {
+    const { handleError, handleMessage } = this.props;
     const { name, description, file } = this.state;
 
     var data = new FormData(file);
@@ -70,9 +73,11 @@ export default class UploadModal extends Component {
       body: data,
       cType: 'multipart/form-data'
     }).then(body => {
-      console.log('Body', body);
+      this.onClose();
+      handleMessage(body.message);
     }).catch(error => {
-      console.log('Error ',error);
+      this.onClose();
+      handleError(error.message);
     });
   };
 
@@ -82,7 +87,10 @@ export default class UploadModal extends Component {
 
     return (
       <div>
-        <Modal show={ showModal } onHide={ this.onClose }>
+        <Modal
+          show={ showModal }
+          onHide={ this.onClose }
+        >
           <Modal.Header closeButton>
             <Modal.Title>New Photo Details</Modal.Title>
           </Modal.Header>
@@ -102,7 +110,10 @@ export default class UploadModal extends Component {
             <Button onClick={ this.onClose }>
               Close
             </Button>
-            <Button onClick={ this.onSubmit } bsStyle="primary">
+            <Button
+              onClick={ this.onSubmit }
+              bsStyle='primary'
+            >
               Upload
             </Button>
           </Modal.Footer>

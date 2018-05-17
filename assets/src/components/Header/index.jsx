@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import { Button } from 'react-bootstrap';
+import { Button, PageHeader } from 'react-bootstrap';
 
 export default class Header extends Component {
   static propTypes = {
@@ -21,13 +21,21 @@ export default class Header extends Component {
   render() {
     return (
       <div>
-        <div id='headerContainer' className='container-fluid'>
-          <h4>Photo App</h4>
+        <PageHeader>
+          <div
+            id='headerContainer'
+            className='container-fluid'
+          >
+            <h4>Photo App</h4>
 
-          <Button onClick={ this.handleClick } bsStyle="primary">
-            Upload New Photo
-          </Button>
-        </div>
+            <Button
+              onClick={ this.handleClick }
+              bsStyle="primary"
+            >
+              Upload New Photo
+            </Button>
+          </div>
+        </PageHeader>;
       </div>
     )
   };

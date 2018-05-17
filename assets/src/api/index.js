@@ -20,10 +20,10 @@ const asyncRequest = async (payload) => {
     body: contentType === defaultContentType ? JSON.stringify(body) : body,
   });
 
+  console.log(response);
 
   if (response.status === 200) {
     const responseBody = response.json();
-    console.log(responseBody);
     return responseBody;
   }
 
