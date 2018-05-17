@@ -16,7 +16,7 @@ export default class UploadModal extends Component {
     this.state = {
       name: '',
       description: '',
-      file: {}
+      file: null
     };
 
     this.onClose = this.onClose.bind(this);
@@ -24,6 +24,7 @@ export default class UploadModal extends Component {
     this.onDescriptionChange = this.onDescriptionChange.bind(this);
     this.onFileChange = this.onFileChange.bind(this);
     this.onSubmit = this.onSubmit.bind(this);
+    this.onFileUpload = this.onFileUpload.bind(this);
   };
 
   onClose() {
@@ -40,38 +41,39 @@ export default class UploadModal extends Component {
   };
 
   onFileChange(file) {
-    this.setState({ file: file});
+    this.setState({ file: file });
   };
 
   onSubmit() {
-    console.log(this.state);
-  };
-
-  getPhotoList() {
     const { name, description, file } = this.state;
 
-    if (
-      name !== ''
-      && description !== ''
-      && file.hasOwnProperty('type')
-      && file.hasOwnProperty('size')
-    ) {
-      let formData = new FormData();
-      formData.append('name', name);
-      formData.append('description', description);
-      formData.append('file', file);
-
-      asyncRequest({
-        path: `api/photo/upload`,
-        method: 'post',
-        body: formData,
-        cType: 'multipart/form-data'
-      }).then(body => {
-        console.log(body);
-      }).catch(error => {
-        console.log(error);
-      });
+    if (!file) {
+      return;
     }
+
+    if (name !== '' && description !== '') {
+      this.onFileUpload();
+    }
+  };
+
+  onFileUpload() {
+    const { name, description, file } = this.state;
+
+    var data = new FormData(file);
+    data.append('name', name);
+    data.append('description', description);
+    data.append('attachment', file);
+
+    asyncRequest({
+      path: `api/photo/upload`,
+      method: 'post',
+      body: data,
+      cType: 'multipart/form-data'
+    }).then(body => {
+      console.log('Body', body);
+    }).catch(error => {
+      console.log('Error ',error);
+    });
   };
 
   render() {

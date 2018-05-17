@@ -38,9 +38,8 @@ module.exports.http = {
       'poweredBy',
       'router',
       'www',
-      'favicon',
+      //'favicon',
     ],
-
 
     /***************************************************************************
     *                                                                          *
@@ -50,17 +49,20 @@ module.exports.http = {
     *                                                                          *
     ***************************************************************************/
 
+    // Skipper: Middleware form multipart/form-data
+    bodyParser: (function _configureBodyParser(){
+      //const skipper = require('skipper-s3');
+      const skipper = require('skipper');
+      const middlewareFn = skipper({ limit: '5mb' });
+      return middlewareFn;
+    })(),
+
+    // Custom request logger
     requestLogger: function(req, res, next) {
       console.log('User agent :: ', req.headers['user-agent']);
       console.log('Requested :: ', req.method, 'path'.blue,':: '+ req.url, 'ip'.blue ,':: '+req.ip);
       return next();
-    },
-
-    bodyParser: (function _configureBodyParser(){
-      var skipper = require('skipper');
-      var middlewareFn = skipper({ strict: true, limit: '5mb' });
-      return middlewareFn;
-    })(),
+    }
 
   },
 

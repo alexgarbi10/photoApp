@@ -11,7 +11,6 @@ export default class UploadForm extends Component {
   static propTypes = {
     name: PropTypes.string.isRequired,
     description: PropTypes.string.isRequired,
-    file: PropTypes.object.isRequired,
     handleNameChange: PropTypes.func.isRequired,
     handleDescriptionChange: PropTypes.func.isRequired,
     handleFileChange: PropTypes.func.isRequired
@@ -60,14 +59,12 @@ export default class UploadForm extends Component {
 
   validateFile() {
     const { file } = this.props;
-    const type = file.type;
-    const size = file.size;
 
-    if (!type || !size) {
+    if (!file || !file.type || !file.size) {
       return null;
     }
 
-    if (size > 1048576) {
+    if (file.size > 5000000) {
       return 'error';
     }
 

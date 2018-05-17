@@ -10,15 +10,15 @@ const asyncRequest = async (payload) => {
   } = payload;
 
   const contentType = cType || defaultContentType;
-  const headers = { 'Content-Type': `${ contentType }` };
+  const headers = {
+    'Content-Type': `${ contentType }`
+  };
 
   const response = await fetch(`${ remoteUrl }/${ path }`, {
     method,
-    headers,
-    body: body ? JSON.stringify(body) : undefined,
+    headers: contentType === defaultContentType ? headers : undefined,
+    body: contentType === defaultContentType ? JSON.stringify(body) : body,
   });
-
-  console.log('response',response);
 
   if (response.status === 200) {
     const responseBody = response.json();

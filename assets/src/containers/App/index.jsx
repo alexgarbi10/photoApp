@@ -36,13 +36,11 @@ export default class App extends Component {
       path: `api/photo/list`,
       method: 'get',
     }).then(body => {
-      this.setState({ list: body.data });
+      this.setState({ list: body.list });
     }).catch(error => {
-      console.log(error);
-
       this.setState({
         error: true,
-        msg: error
+        msg: error.uiText
       });
     });
   };

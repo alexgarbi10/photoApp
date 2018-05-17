@@ -1,3 +1,5 @@
+/* Webpack 4 Configuration */
+
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 
 module.exports = {
