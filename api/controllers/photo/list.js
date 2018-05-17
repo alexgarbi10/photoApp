@@ -10,7 +10,6 @@ module.exports = async function list(req, res) {
     const list = await Photo.find({ sort: 'createdAt DESC' });
     return res.status(200).json({ list: list });
   } catch (error) {
-    const data = { message: error.message || 'Internal server error' };
-    return res.serverError(data);
+    return res.serverError(error);
   }
 };

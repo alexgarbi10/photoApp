@@ -7,63 +7,63 @@
 
 module.exports = async function upload(req, res) {
   const { name, description } = req.allParams();
-
-  console.log('Data', name);
-  console.log('description', description);
+  const uploadConfig = {
+    // adapter: require('skipper-s3'), // Skipper custom adapter
+    // key: 'S3 Key', // S3 Key
+    // secret: 'S3 Secret', // S3 Secret
+    // bucket: 'Bucket Name' // S3 bucket name
+    maxBytes: 5000000, // Don't allow the total upload size to exceed ~5MB
+  };
 
   // Parameter validations
   if (!name) {
-    return res.badRequest('Please insert a name for the photo');
+    return res.badRequest(new Error('No photo name specified'));
   }
 
   if (!description) {
-    return res.badRequest('Please insert a description for the photo');
+    return res.badRequest(new Error('No photo description specified'));
   }
-
-  // Get the base URL from config
-  var baseUrl = sails.config.baseUrl;
 
   try {
     // New photo is added to db
-    const photo = await Photo.create({
+    var photo = await Photo.create({
       name: name,
       description: description
-    });
+    }).fetch();
 
-    console.log('New photo', photo);
+    // Upload file using custom config
+    req.file('attachment').upload(
+      uploadConfig,
+      async function handleFileUpload(err, uploadedFiles) {
+        if (err) {
+          return res.serverError(new Error('Photo could not be uploaded to the server'));
+        }
 
-    req.file('attachment').upload({
-      maxBytes: 5000000, // don't allow the total upload size to exceed ~5MB
-      saveAs: photo.id
-    }, (err, uploadedFiles) => {
-      if (err) {
-        return res.serverError(err.message || err.stack);
+        // Photo attrs to update
+        var file = uploadedFiles[0];
+        var updates = {
+          imageFd: file.fd,
+          imageType: file.type,
+          imageSize: file.size
+        };
+
+        // Update photo in db
+        var photos = await Photo.update({
+          id: photo.id
+        }, updates).fetch();
+
+        // Validate at least one updated instance
+        if (photos.length === 0) {
+          return res.serverError(new Error('Photo could not be uploaded to the server'));
+        }
+
+        return res.status(200).json({
+          photo: photos[0],
+          message: photo.name + ' file uploaded successfully!',
+        });
       }
-
-      console.log(uploadedFiles);
-
-      // Photo attrs to update
-      const file = uploadedFiles[0];
-      const updates = {
-        imageFd: file.fd,
-        size: file.size,
-        type: file.type
-      };
-
-      // Photo is updated in db
-      Photo.update({
-        id: photo.id
-      }, updates);
-
-      console.log('photos', photos);
-
-      return res.status(200).json({
-        photo: photos,
-        message: photo.name + ' file uploaded successfully!',
-      });
-    });
+    );
   } catch (error) {
-    const data = { message: error.message || 'Internal server error' };
-    return res.serverError(data);
+    return res.serverError(error);
   }
 };

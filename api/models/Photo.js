@@ -15,13 +15,13 @@ module.exports = {
 
     name: { type: 'string', required: true },
     description: { type: 'string', required: true },
-    imageFd: { type: 'string', required: true },
-
+    imageFd: { type: 'string' },
+    imageType: { type: 'string' },
+    imageSize: { type: 'number' },
 
     //  ╔═╗╔╦╗╔╗ ╔═╗╔╦╗╔═╗
     //  ║╣ ║║║╠╩╗║╣  ║║╚═╗
     //  ╚═╝╩ ╩╚═╝╚═╝═╩╝╚═╝
-
 
     //  ╔═╗╔═╗╔═╗╔═╗╔═╗╦╔═╗╔╦╗╦╔═╗╔╗╔╔═╗
     //  ╠═╣╚═╗╚═╗║ ║║  ║╠═╣ ║ ║║ ║║║║╚═╗
