@@ -40,12 +40,12 @@ Install dependencies:
 
 Other references:
 
-Sails.js: https://sailsjs.com/
-React: https://reactjs.org/
-Bootstrap: https://getbootstrap.com/docs/3.3/
-React-Bootstrap wrapper: https://react-bootstrap.github.io/
-Webpack: https://webpack.js.org/
-Babel: https://babeljs.io/
+- Sails.js: https://sailsjs.com/
+- React: https://reactjs.org/
+- Bootstrap: https://getbootstrap.com/docs/3.3/
+- React-Bootstrap wrapper: https://react-bootstrap.github.io/
+- Webpack: https://webpack.js.org/
+- Babel: https://babeljs.io/
 
 # Running in dev mode
 
@@ -65,4 +65,4 @@ Modules used: eslint and eslint-plugin-react
 
 ``` $ npm test ```
 
-This command is used for linting. For more information about the linting tool used, refer to this page: https://eslint.org/
+This command is used for linting both frontend and backend apps. For more information about the linting tool used (and the configuration files), refer to this page: https://eslint.org/
