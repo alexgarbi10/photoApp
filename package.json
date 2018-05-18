@@ -1,8 +1,8 @@
 {
   "name": "photo-app",
   "private": true,
-  "version": "0.0.0",
-  "description": "a Sails application",
+  "version": "0.0.1",
+  "description": "alexgarbi10-photo-app",
   "keywords": [],
   "dependencies": {
     "@sailshq/connect-redis": "^3.2.1",

@@ -1,27 +1,68 @@
-# photo-app
+# photoApp
 
-a [Sails v1](https://sailsjs.com) application
+## Table of contents
+* [Description](#user-content-what-is-this)
+* [Features](#user-content-features)
+* [Next features](#user-content-next-features)
+* [Setup](#user-content-setup)
+* [Running in dev mode](#user-content-running-in-dev-mode)
+* [Build (production)](#user-content-build-production)
+* [Linting](#user-content-linting)
+* [Changelog](#user-content-changelog)
 
+# Description
 
-### Links
+Simple app for uploading/displaying a list of photos.
+Frontend: React 16.x, Bootstrap 3.x and Webpack 4.x for ES6 support
+Backend: Sails.js v1, Node.js 8.x
 
-+ [Get started](https://sailsjs.com/get-started)
-+ [Sails framework documentation](https://sailsjs.com/documentation)
-+ [Version notes / upgrading](https://sailsjs.com/documentation/upgrading)
-+ [Deployment tips](https://sailsjs.com/documentation/concepts/deployment)
-+ [Community support options](https://sailsjs.com/support)
-+ [Professional / enterprise options](https://sailsjs.com/enterprise)
+# Features
+- Sails.js v1
+- React 16
+- Bootstrap 3
+- Webpack 4 (development and production configuration)
+- Babel (ES6)
+- Hot Module Replacement
+- SCSS support
+- Linting (eslint and eslint-plugin-react)
+- Skipper-disk and Skipper-s3 configuration
 
+# Next features
+- Amazon Web Services
+- Tests (Mocha for backend and Jest for frontend)
 
-### Version info
+# Setup
+Node.js must be installed. For more information on this subject, refer to this page: https://nodejs.org/en/
 
-This app was originally generated on Sat May 12 2018 21:01:06 GMT-0400 (-04) using Sails v1.0.2.
+Install dependencies:
 
-<!-- Internally, Sails used [`sails-generate@1.15.25`](https://github.com/balderdashy/sails-generate/tree/v1.15.25/lib/core-generators/new). -->
+``` $ npm install ```
 
+Other references:
 
+Sails.js: https://sailsjs.com/
+React: https://reactjs.org/
+Bootstrap: https://getbootstrap.com/docs/3.3/
+React-Bootstrap wrapper: https://react-bootstrap.github.io/
+Webpack: https://webpack.js.org/
+Babel: https://babeljs.io/
 
-<!--
-Note:  Generators are usually run using the globally-installed `sails` CLI (command-line interface).  This CLI version is _environment-specific_ rather than app-specific, thus over time, as a project's dependencies are upgraded or the project is worked on by different developers on different computers using different versions of Node.js, the Sails dependency in its package.json file may differ from the globally-installed Sails CLI release it was originally generated with.  (Be sure to always check out the relevant [upgrading guides](https://sailsjs.com/upgrading) before upgrading the version of Sails used by your app.  If you're stuck, [get help here](https://sailsjs.com/support).)
--->
+# Running in dev mode
 
+``` $ npm run start:all ```
+
+This will run start client's webpack-dev-server and server's sails lift commands
+
+# Build (production)
+
+``` $ npm run build ```
+
+Note: This is currently experimental and will only build the frontend app
+
+# Linting
+
+Modules used: eslint and eslint-plugin-react
+
+``` $ npm test ```
+
+This command is used for linting. For more information about the linting tool used, refer to this page: https://eslint.org/
