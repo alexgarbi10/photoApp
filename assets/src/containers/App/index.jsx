@@ -66,8 +66,13 @@ export default class App extends Component {
     this.setState({ error: false });
   }
 
-  onDetailOpen() {
-    this.setState({ showDescription: true });
+  onDetailOpen(item) {
+    console.log(item);
+
+    this.setState({
+      photo: item,
+      showDescription: true
+    });
   }
 
   onDetailClose() {

@@ -1,0 +1,29 @@
+.photo-panel-expanded {
+  width: 80% !important;
+  height: 600px;
+  align-items: center;
+  margin: 0 auto;
+}
+
+.photo-panel-body-expanded {
+  width: 90%;
+  height: auto;
+  margin: 0 auto;
+  text-align: center;
+  justify-content: center;
+}
+
+.photo-thumbnail-expanded {
+  width: 100%;
+  height: auto;
+  max-height: 400px;
+  margin: 0 auto;
+  text-align: center;
+  cursor: pointer;
+  padding-bottom: 20px;
+  border-bottom: 1px solid black;
+}
+
+.created-at {
+  margin-top: 20px;
+}

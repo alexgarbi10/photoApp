@@ -16,6 +16,7 @@ export default class PhotoList extends Component {
     const panel = <PhotoPanel
       item={ item }
       key={ item.id }
+      expanded={ false }
       handleOpen={ handleOpen }
       handleError={ handleError }
     />;
@@ -25,11 +26,22 @@ export default class PhotoList extends Component {
   renderExpandedPanel(item) {
     const { handleClose, handleError } = this.props;
 
-    return <div></div>;
+    const panel = <PhotoPanel
+      item={ item }
+      key={ item.id }
+      expanded={ true }
+      handleClose={ handleClose }
+      handleError={ handleError }
+    />;
+    return panel;
   }
 
   render() {
-    const { list } = this.props;
+    const { list, show, item } = this.props;
+
+    if (show) {
+      return this.renderExpandedPanel(item);
+    }
 
     return (
       <div>
