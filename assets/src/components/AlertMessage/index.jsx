@@ -15,7 +15,8 @@ export default class AlertMessage extends Component {
   }
 
   render() {
-    const { show, message } = this.props;
+    const { show, message, error } = this.props;
+    const classValue = error ? 'warning' : 'success';
 
     if (show) {
       return (
@@ -23,7 +24,7 @@ export default class AlertMessage extends Component {
           <Alert
             onDismiss={this.handleDismiss}
             className='text-center'
-            bsStyle='success'
+            bsStyle={ classValue }
           >
             <h4>{ message }</h4>
             <p>
@@ -47,5 +48,6 @@ export default class AlertMessage extends Component {
 AlertMessage.propTypes = {
   message: PropTypes.string.isRequired,
   show: PropTypes.bool.isRequired,
+  error: PropTypes.bool.isRequired,
   handleClose: PropTypes.func.isRequired
 };

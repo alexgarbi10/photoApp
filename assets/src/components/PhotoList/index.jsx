@@ -5,6 +5,27 @@ import PhotoPanel from '../../components/PhotoPanel';
 export default class PhotoList extends Component {
   constructor(props) {
     super(props);
+
+    this.renderPanel = this.renderPanel.bind(this);
+    this.renderExpandedPanel = this.renderExpandedPanel.bind(this);
+  }
+
+  renderPanel(item) {
+    const { handleOpen, handleError } = this.props;
+
+    const panel = <PhotoPanel
+      item={ item }
+      key={ item.id }
+      handleOpen={ handleOpen }
+      handleError={ handleError }
+    />;
+    return panel;
+  }
+
+  renderExpandedPanel(item) {
+    const { handleClose, handleError } = this.props;
+
+    return <div></div>;
   }
 
   render() {
@@ -18,11 +39,11 @@ export default class PhotoList extends Component {
               There are {list.length} uploaded photos.
             </h2>
 
-            <div>
+            <div className='photo-list-container'>
               {
                 list.map(
                   (item) => {
-                    return <PhotoPanel item={ item } key={ item.id } />;
+                    return this.renderPanel(item);
                   }
                 )
               }
@@ -40,5 +61,10 @@ export default class PhotoList extends Component {
 }
 
 PhotoList.propTypes = {
-  list: PropTypes.array.isRequired
+  list: PropTypes.array.isRequired,
+  show: PropTypes.bool.isRequired,
+  item: PropTypes.object,
+  handleOpen: PropTypes.func.isRequired,
+  handleClose: PropTypes.func.isRequired,
+  handleError: PropTypes.func.isRequired
 };

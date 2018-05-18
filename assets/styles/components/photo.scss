@@ -1,0 +1,27 @@
+.photo-list-container {
+  flex-direction: row;
+  flex-wrap: nowrap;
+}
+
+.photo-panel {
+  width: 60% !important;
+  height: 400px;
+  align-items: center;
+  margin: 0 auto;
+}
+
+.photo-panel-body {
+  width: 75%;
+  height: auto;
+  margin: 0 auto;
+  text-align: center;
+  justify-content: center;
+}
+
+.photo-thumbnail {
+  width: 100%;
+  height: auto;
+  max-height: 325px;
+  margin: 0 auto;
+  text-align: center;
+}

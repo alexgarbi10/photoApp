@@ -19,14 +19,15 @@ export default class Header extends Component {
       <div>
         <PageHeader>
           <div
-            id='headerContainer'
+            id='header-container'
             className='container-fluid'
           >
-            <h4>Photo App</h4>
+            <h4 className='header-title'>Photo App</h4>
 
             <Button
               onClick={ this.handleClick }
-              bsStyle="primary"
+              className='header-button'
+              bsStyle='primary'
             >
               Upload New Photo
             </Button>

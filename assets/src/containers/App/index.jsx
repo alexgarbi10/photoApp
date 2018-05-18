@@ -4,6 +4,7 @@ import AlertMessage from '../../components/AlertMessage';
 import UploadModal from '../../components/UploadModal';
 import PhotoList from '../../components/PhotoList';
 import { asyncRequest } from '../../api';
+import '../../../styles/app.scss';
 
 export default class App extends Component {
   constructor() {
@@ -25,6 +26,8 @@ export default class App extends Component {
     this.onMessage = this.onMessage.bind(this);
     this.onAlertMessageClose = this.onAlertMessageClose.bind(this);
     this.onAlertErrorClose = this.onAlertErrorClose.bind(this);
+    this.onDetailOpen = this.onDetailOpen.bind(this);
+    this.onDetailClose = this.onDetailClose.bind(this);
   }
 
   componentDidMount() {
@@ -49,9 +52,9 @@ export default class App extends Component {
 
   onMessage(message) {
     this.setState({
+      error: false,
       info: true,
-      infoMessage: message,
-      error: false
+      infoMessage: message
     });
   }
 
@@ -61,6 +64,14 @@ export default class App extends Component {
 
   onAlertErrorClose() {
     this.setState({ error: false });
+  }
+
+  onDetailOpen() {
+    this.setState({ showDescription: true });
+  }
+
+  onDetailClose() {
+    this.setState({ showDescription: false });
   }
 
   getPhotoList() {
@@ -99,12 +110,14 @@ export default class App extends Component {
         <AlertMessage
           message={ infoMessage }
           show={ info }
+          error={ false }
           handleClose={ this.onAlertMessageClose }
         />
 
         <AlertMessage
           message={ errorMessage }
           show={ error }
+          error={ true }
           handleClose={ this.onAlertErrorClose }
         />
 
@@ -117,6 +130,11 @@ export default class App extends Component {
 
         <PhotoList
           list={ list }
+          show={ showDescription }
+          item={ photo }
+          handleOpen={ this.onDetailOpen }
+          handleClose={ this.onDetailClose }
+          handleError={ this.onError }
         />
       </div>
     );

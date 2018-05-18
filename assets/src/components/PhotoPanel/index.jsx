@@ -9,14 +9,21 @@ export default class PhotoPanel extends Component {
     this.state = {
       src: ''
     };
+
+    this.onClick = this.onClick.bind(this);
   }
 
   componentDidMount() {
     this.getImageData();
   }
 
+  onClick() {
+    const { item, handleOpen } = this.props;
+    handleOpen(item);
+  }
+
   getImageData() {
-    const { item } = this.props;
+    const { item, handleError } = this.props;
     const id = item.id;
 
     asyncRequest({
@@ -26,10 +33,7 @@ export default class PhotoPanel extends Component {
       const url = URL.createObjectURL(body);
       this.setState({ src: url });
     }).catch(error => {
-      console.log(error);
-      // this.setState({
-      //   error: true
-      // });
+      handleError(error.message);
     });
   }
 
@@ -39,12 +43,13 @@ export default class PhotoPanel extends Component {
 
     return (
       <div>
-        <Panel bsStyle="primary">
+        <Panel className='photo-panel' bsStyle='primary'>
           <Panel.Heading>
-            <Panel.Title componentClass="h3">Photo { item.name }</Panel.Title>
+            <Panel.Title componentClass='h3'>Photo { item.name }</Panel.Title>
           </Panel.Heading>
-          <Panel.Body>
+          <Panel.Body className='photo-panel-body'>
             <img
+              onClick={ this.onClick }
               src={ src }
               alt={ item.name }
               className='photo-thumbnail'
@@ -58,5 +63,8 @@ export default class PhotoPanel extends Component {
 }
 
 PhotoPanel.propTypes = {
-  item: PropTypes.object.isRequired
+  item: PropTypes.object.isRequired,
+  handleOpen: PropTypes.func.isRequired,
+  handleClose: PropTypes.func.isRequired,
+  handleError: PropTypes.func.isRequired
 };

@@ -1,0 +1,20 @@
+#header-container {
+  background-color: black;
+  color: white;
+  height: 100px;
+  display: block;
+  position: relative;
+}
+
+.header-title {
+  font-size: 3rem;
+  top: 25%;
+  left: 10%;
+  position: absolute;
+}
+
+.header-button {
+  top: 35%;
+  left: 80%;
+  position: absolute;
+}
