@@ -5,7 +5,7 @@ import { Alert, Button } from 'react-bootstrap';
 export default class AlertMessage extends Component {
   static propTypes = {
     message: PropTypes.string.isRequired,
-    showAlert: PropTypes.bool.isRequired,
+    show: PropTypes.bool.isRequired,
     handleClose: PropTypes.func.isRequired
   };
 
@@ -21,9 +21,9 @@ export default class AlertMessage extends Component {
   }
 
   render() {
-    const { showAlert, message } = this.props;
+    const { show, message } = this.props;
 
-    if (showAlert) {
+    if (show) {
       return (
         <div>
           <Alert

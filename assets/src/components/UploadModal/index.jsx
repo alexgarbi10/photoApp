@@ -6,7 +6,7 @@ import { asyncRequest } from '../../api';
 
 export default class UploadModal extends Component {
   static propTypes = {
-    showModal: PropTypes.bool.isRequired,
+    show: PropTypes.bool.isRequired,
     handleClose: PropTypes.func.isRequired,
     handleError: PropTypes.func.isRequired,
     handleMessage: PropTypes.func.isRequired
@@ -82,13 +82,13 @@ export default class UploadModal extends Component {
   };
 
   render() {
-    const { showModal } = this.props;
+    const { show } = this.props;
     const { name, description, file } = this.state;
 
     return (
       <div>
         <Modal
-          show={ showModal }
+          show={ show }
           onHide={ this.onClose }
         >
           <Modal.Header closeButton>

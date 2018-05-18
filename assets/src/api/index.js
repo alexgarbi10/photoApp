@@ -1,6 +1,8 @@
-const defaultContentType = 'application/json';
 const remoteUrl = 'http://localhost:1337';
+const defaultContentType = 'application/json';
+const downloadPath = 'api/photo/download';
 
+// Async request middleware
 const asyncRequest = async (payload) => {
   const {
     path,
@@ -9,24 +11,28 @@ const asyncRequest = async (payload) => {
     cType
   } = payload;
 
+  // Set request headers
   const contentType = cType || defaultContentType;
   const headers = {
     'Content-Type': `${ contentType }`
   };
 
-  const response = await fetch(`${ remoteUrl }/${ path }`, {
+  // Fetch data from API
+  var response = await fetch(`${ remoteUrl }/${ path }`, {
     method,
     headers: contentType === defaultContentType ? headers : undefined,
     body: contentType === defaultContentType ? JSON.stringify(body) : body,
   });
 
-  console.log(response);
-
+  // Parse results according to response content-type
   if (response.status === 200) {
-    const responseBody = response.json();
+    const responseBody = path.includes(downloadPath) ?
+      await response.blob() : response.json();
+
     return responseBody;
   }
 
+  // Parse error
   if (
     response.status === 400
     || response.status === 401

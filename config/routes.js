@@ -45,7 +45,6 @@ module.exports.routes = {
   //  ╩ ╩╩  ╩  ╚═╝╝╚╝═╩╝╩  ╚═╝╩╝╚╝ ╩ ╚═╝
 
   'GET /api/photo/list': 'photo/list',
-  'GET /api/photo/fetch/:id': 'photo/fetch',
   'GET /api/photo/download/:id': 'photo/download',
   'POST /api/photo/upload': 'photo/upload',
 

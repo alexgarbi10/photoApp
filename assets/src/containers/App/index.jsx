@@ -2,13 +2,14 @@ import React, { Component } from 'react';
 import Header from '../../components/Header';
 import AlertMessage from '../../components/AlertMessage';
 import UploadModal from '../../components/UploadModal';
+import PhotoList from '../../components/PhotoList';
 import { asyncRequest } from '../../api';
 
 export default class App extends Component {
   constructor() {
     super();
     this.state = {
-      list: null,
+      list: [],
       photo: null,
       showDescription: false,
       showModal: false,
@@ -96,21 +97,25 @@ export default class App extends Component {
 
         <AlertMessage
           message={ infoMessage }
-          showAlert={ info }
+          show={ info }
           handleClose={ this.onAlertMessageClose }
         />
 
         <AlertMessage
           message={ errorMessage }
-          showAlert={ error }
+          show={ error }
           handleClose={ this.onAlertErrorClose }
         />
 
         <UploadModal
-          showModal={ showModal }
+          show={ showModal }
           handleClose={ this.onModalClose }
           handleError={ this.onError }
           handleMessage={ this.onMessage }
+        />
+
+        <PhotoList
+          list={ list }
         />
       </div>
     )

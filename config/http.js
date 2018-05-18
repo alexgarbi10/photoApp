@@ -50,10 +50,10 @@ module.exports.http = {
     ***************************************************************************/
 
     // Skipper: Middleware form multipart/form-data
+    // Don't allow the total upload size to exceed ~5MB
     bodyParser: (function _configureBodyParser(){
-      //const skipper = require('skipper-s3');
       const skipper = require('skipper');
-      const middlewareFn = skipper({ limit: '5mb' });
+      const middlewareFn = skipper({ maxBytes: 5000000 });
       return middlewareFn;
     })(),
 
