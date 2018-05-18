@@ -25,27 +25,27 @@ export default class App extends Component {
     this.onMessage = this.onMessage.bind(this);
     this.onAlertMessageClose = this.onAlertMessageClose.bind(this);
     this.onAlertErrorClose = this.onAlertErrorClose.bind(this);
-  };
+  }
 
   componentDidMount() {
     this.getPhotoList();
-  };
+  }
 
   onModalShow() {
     this.setState({ showModal: true });
-  };
+  }
 
   onModalClose() {
     this.setState({ showModal: false });
-  };
+  }
 
   onError(error = 'Oh! Looks like a problem occurred...') {
     this.setState({
       error: true,
-      errorMessage,
+      errorMessage: error,
       info: false
     });
-  };
+  }
 
   onMessage(message) {
     this.setState({
@@ -53,11 +53,11 @@ export default class App extends Component {
       infoMessage: message,
       error: false
     });
-  };
+  }
 
   onAlertMessageClose() {
     this.setState({ info: false });
-  };
+  }
 
   onAlertErrorClose() {
     this.setState({ error: false });
@@ -71,10 +71,11 @@ export default class App extends Component {
       this.setState({ list: body.list });
     }).catch(error => {
       this.setState({
-        error: true
+        error: true,
+        errorMessage: error.message || 'Oh! Looks like a problem occurred...'
       });
     });
-  };
+  }
 
   render() {
     const {
@@ -118,6 +119,6 @@ export default class App extends Component {
           list={ list }
         />
       </div>
-    )
-  };
-};
+    );
+  }
+}

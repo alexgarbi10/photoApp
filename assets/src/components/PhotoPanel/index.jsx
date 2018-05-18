@@ -4,20 +4,16 @@ import { Panel } from 'react-bootstrap';
 import { asyncRequest } from '../../api';
 
 export default class PhotoPanel extends Component {
-  static propTypes = {
-    item: PropTypes.object.isRequired
-  };
-
   constructor(props) {
     super(props);
     this.state = {
       src: ''
     };
-  };
+  }
 
   componentDidMount() {
     this.getImageData();
-  };
+  }
 
   getImageData() {
     const { item } = this.props;
@@ -35,7 +31,7 @@ export default class PhotoPanel extends Component {
       //   error: true
       // });
     });
-  };
+  }
 
   render() {
     const { item } = this.props;
@@ -57,6 +53,10 @@ export default class PhotoPanel extends Component {
           </Panel.Body>
         </Panel>
       </div>
-    )
-  };
+    );
+  }
+}
+
+PhotoPanel.propTypes = {
+  item: PropTypes.object.isRequired
 };

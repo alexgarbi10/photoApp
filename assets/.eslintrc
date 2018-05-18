@@ -17,12 +17,18 @@
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   "extends": [
-    "../.eslintrc"
+    "../.eslintrc",
+    'plugin:react/recommended'
+  ],
+
+  "plugins": [
+    "react"
   ],
 
   "env": {
     "browser": true,
-    "node": false
+    "node": false,
+    "es6": true
   },
 
   "parserOptions": {
@@ -58,13 +64,14 @@
   },
 
   "rules": {
-    "no-undef": ["error"]
+    "no-undef": ["error"],
     // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
     // ^^Note: If you've enabled the "no-undef" rule in the top level .eslintrc file, then
     // the globalIds of Sails models should also be blacklisted above under "globals".
     // (In this scenario, also note that this override for the "no-undef" rule could
     // simply be removed, since it'd be redundant.)
     // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+    "react/jsx-uses-vars": ["error"]
   }
 
 }

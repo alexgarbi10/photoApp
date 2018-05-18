@@ -3,17 +3,11 @@ import PropTypes from 'prop-types';
 import { Alert, Button } from 'react-bootstrap';
 
 export default class AlertMessage extends Component {
-  static propTypes = {
-    message: PropTypes.string.isRequired,
-    show: PropTypes.bool.isRequired,
-    handleClose: PropTypes.func.isRequired
-  };
-
   constructor(props) {
     super(props);
 
     this.handleDismiss = this.handleDismiss.bind(this);
-  };
+  }
 
   handleDismiss() {
     const { handleClose } = this.props;
@@ -43,9 +37,15 @@ export default class AlertMessage extends Component {
             </p>
           </Alert>
         </div>
-      )
+      );
     }
 
     return null;
-  };
+  }
+}
+
+AlertMessage.propTypes = {
+  message: PropTypes.string.isRequired,
+  show: PropTypes.bool.isRequired,
+  handleClose: PropTypes.func.isRequired
 };

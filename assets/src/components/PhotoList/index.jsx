@@ -3,13 +3,9 @@ import PropTypes from 'prop-types';
 import PhotoPanel from '../../components/PhotoPanel';
 
 export default class PhotoList extends Component {
-  static propTypes = {
-    list: PropTypes.array.isRequired
-  };
-
   constructor(props) {
     super(props);
-  };
+  }
 
   render() {
     const { list } = this.props;
@@ -39,6 +35,10 @@ export default class PhotoList extends Component {
           </h2>
         }
       </div>
-    )
-  };
+    );
+  }
+}
+
+PhotoList.propTypes = {
+  list: PropTypes.array.isRequired
 };

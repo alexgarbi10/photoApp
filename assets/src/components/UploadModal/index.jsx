@@ -5,16 +5,8 @@ import UploadForm from '../UploadForm';
 import { asyncRequest } from '../../api';
 
 export default class UploadModal extends Component {
-  static propTypes = {
-    show: PropTypes.bool.isRequired,
-    handleClose: PropTypes.func.isRequired,
-    handleError: PropTypes.func.isRequired,
-    handleMessage: PropTypes.func.isRequired
-  };
-
   constructor(props) {
     super(props);
-
     this.state = {
       name: '',
       description: '',
@@ -27,24 +19,24 @@ export default class UploadModal extends Component {
     this.onFileChange = this.onFileChange.bind(this);
     this.onSubmit = this.onSubmit.bind(this);
     this.onFileUpload = this.onFileUpload.bind(this);
-  };
+  }
 
   onClose() {
     const { handleClose } = this.props;
     handleClose();
-  };
+  }
 
   onNameChange(name) {
     this.setState({ name: name });
-  };
+  }
 
   onDescriptionChange(description) {
     this.setState({ description: description });
-  };
+  }
 
   onFileChange(file) {
     this.setState({ file: file });
-  };
+  }
 
   onSubmit() {
     const { name, description, file } = this.state;
@@ -56,7 +48,7 @@ export default class UploadModal extends Component {
     if (name !== '' && description !== '') {
       this.onFileUpload();
     }
-  };
+  }
 
   onFileUpload() {
     const { handleError, handleMessage } = this.props;
@@ -79,7 +71,7 @@ export default class UploadModal extends Component {
       this.onClose();
       handleError(error.message);
     });
-  };
+  }
 
   render() {
     const { show } = this.props;
@@ -119,6 +111,13 @@ export default class UploadModal extends Component {
           </Modal.Footer>
         </Modal>
       </div>
-    )
-  };
+    );
+  }
+}
+
+UploadModal.propTypes = {
+  show: PropTypes.bool.isRequired,
+  handleClose: PropTypes.func.isRequired,
+  handleError: PropTypes.func.isRequired,
+  handleMessage: PropTypes.func.isRequired
 };

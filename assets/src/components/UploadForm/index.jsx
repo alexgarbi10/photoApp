@@ -3,19 +3,10 @@ import PropTypes from 'prop-types';
 import {
   FormGroup,
   FormControl,
-  ControlLabel,
-  HelpBlock
+  ControlLabel
 } from 'react-bootstrap';
 
 export default class UploadForm extends Component {
-  static propTypes = {
-    name: PropTypes.string.isRequired,
-    description: PropTypes.string.isRequired,
-    handleNameChange: PropTypes.func.isRequired,
-    handleDescriptionChange: PropTypes.func.isRequired,
-    handleFileChange: PropTypes.func.isRequired
-  };
-
   constructor(props) {
     super(props);
 
@@ -25,7 +16,7 @@ export default class UploadForm extends Component {
     this.onNameChange = this.onNameChange.bind(this);
     this.onDescriptionChange = this.onDescriptionChange.bind(this);
     this.onFileChange = this.onFileChange.bind(this);
-  };
+  }
 
   // Custom form field validations
   validateName() {
@@ -41,7 +32,7 @@ export default class UploadForm extends Component {
     }
 
     return 'error';
-  };
+  }
 
   validateDescription() {
     const { description } = this.props;
@@ -56,7 +47,7 @@ export default class UploadForm extends Component {
     }
 
     return 'error';
-  };
+  }
 
   validateFile() {
     const { file } = this.props;
@@ -70,7 +61,7 @@ export default class UploadForm extends Component {
     }
 
     return 'success';
-  };
+  }
 
   getValidationState(field) {
     if (field === 'name') {
@@ -86,25 +77,25 @@ export default class UploadForm extends Component {
     }
 
     return null;
-  };
+  }
 
   onNameChange(e) {
     const name = e.target.value;
     const { handleNameChange } = this.props;
     handleNameChange(name);
-  };
+  }
 
   onDescriptionChange(e) {
     const description = e.target.value;
     const { handleDescriptionChange } = this.props;
     handleDescriptionChange(description);
-  };
+  }
 
   onFileChange(e) {
     const file = e.target.files[0];
     const { handleFileChange } = this.props;
     handleFileChange(file);
-  };
+  }
 
   render() {
     const { name, description } = this.props;
@@ -152,6 +143,15 @@ export default class UploadForm extends Component {
           </FormGroup>
         </form>
       </div>
-    )
-  };
+    );
+  }
+}
+
+UploadForm.propTypes = {
+  name: PropTypes.string.isRequired,
+  description: PropTypes.string.isRequired,
+  file: PropTypes.string,
+  handleNameChange: PropTypes.func.isRequired,
+  handleDescriptionChange: PropTypes.func.isRequired,
+  handleFileChange: PropTypes.func.isRequired
 };

@@ -3,20 +3,16 @@ import PropTypes from 'prop-types';
 import { Button, PageHeader } from 'react-bootstrap';
 
 export default class Header extends Component {
-  static propTypes = {
-    handleShow: PropTypes.func.isRequired
-  };
-
   constructor(props) {
     super(props);
 
     this.handleClick = this.handleClick.bind(this);
-  };
+  }
 
   handleClick() {
     const { handleShow } = this.props;
     handleShow();
-  };
+  }
 
   render() {
     return (
@@ -37,6 +33,10 @@ export default class Header extends Component {
           </div>
         </PageHeader>;
       </div>
-    )
-  };
+    );
+  }
+}
+
+Header.propTypes = {
+  handleShow: PropTypes.func.isRequired
 };
