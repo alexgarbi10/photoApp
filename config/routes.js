@@ -24,9 +24,11 @@ module.exports.routes = {
   *                                                                          *
   ***************************************************************************/
 
-  '/*': {
-    view: 'pages/homepage',
-    skipAssets: false
+  // All GET requests are directed to the app controller which renders React app.
+  'GET /*': {
+    controller: 'AppController',
+    action: 'index',
+    skipAssets: true,
   },
 
   /***************************************************************************

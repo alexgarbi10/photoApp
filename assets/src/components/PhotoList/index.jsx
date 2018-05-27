@@ -38,6 +38,9 @@ export default class PhotoList extends Component {
 
   render() {
     const { list, show, item } = this.props;
+    const header = list.length === 1 ?
+      `There is ${ list.length } uploaded photo.` :
+      `There are ${ list.length } uploaded photos.`;
 
     if (show) {
       return this.renderExpandedPanel(item);
@@ -48,7 +51,7 @@ export default class PhotoList extends Component {
         { list.length > 0 &&
           <div>
             <h2 className='text-center'>
-              There are {list.length} uploaded photos.
+              { header }
             </h2>
 
             <div className='photo-list-container'>

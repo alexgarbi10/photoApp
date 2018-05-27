@@ -1,6 +1,8 @@
 /* Webpack 4 Configuration: Common properties */
 
+const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
+const outputPath = path.resolve(__dirname, '../.tmp/public');
 
 module.exports = {
   entry: {
@@ -16,7 +18,7 @@ module.exports = {
     })
   ],
   output: {
-    path: __dirname + '/.tmp/public',
+    path: outputPath,
     filename: 'bundle.js'
   },
   resolve: {
