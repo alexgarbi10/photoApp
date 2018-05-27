@@ -150,7 +150,7 @@ export default class UploadForm extends Component {
 UploadForm.propTypes = {
   name: PropTypes.string.isRequired,
   description: PropTypes.string.isRequired,
-  file: PropTypes.string,
+  file: PropTypes.object,
   handleNameChange: PropTypes.func.isRequired,
   handleDescriptionChange: PropTypes.func.isRequired,
   handleFileChange: PropTypes.func.isRequired
