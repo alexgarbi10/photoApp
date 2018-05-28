@@ -1,5 +1,4 @@
-const remoteUrl = 'http://localhost:1337';
-//const remoteUrl = 'http://ec2-18-218-105-143.us-east-2.compute.amazonaws.com:1337';
+const remoteUrl = 'http://ec2-18-218-105-143.us-east-2.compute.amazonaws.com:1337';
 const defaultContentType = 'application/json';
 const downloadPath = 'api/photo/download';
 

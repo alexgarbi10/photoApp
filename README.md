@@ -15,6 +15,7 @@
 Simple app for uploading/displaying a list of photos.
 Frontend: React 16.x, Bootstrap 3.x and Webpack 4.x for ES6 support
 Backend: Sails.js v1, Node.js 8.x
+App URL: http://ec2-18-218-105-143.us-east-2.compute.amazonaws.com/
 
 # Features
 - Sails.js v1
@@ -26,9 +27,10 @@ Backend: Sails.js v1, Node.js 8.x
 - SCSS support
 - Linting (eslint and eslint-plugin-react)
 - Skipper-disk and Skipper-s3 configuration
+- Hosted on EC2 AWS instance
+- Using RDS MySQL AWS instance for the database
 
 # Next features
-- Amazon Web Services
 - Tests (Mocha for backend and Jest for frontend)
 
 # Setup
@@ -49,7 +51,7 @@ Other references:
 
 # Running in dev mode
 
-``` $ npm run start:all ```
+``` $ npm run start ```
 
 This will run start client's webpack-dev-server and server's sails lift commands
 
@@ -57,7 +59,7 @@ This will run start client's webpack-dev-server and server's sails lift commands
 
 ``` $ npm run build ```
 
-Note: This is currently experimental and will only build the frontend app
+This will build React's production bundle and start sails.js app in production mode using forever tool. For more information on this module, refer to this page: https://www.npmjs.com/package/forever
 
 # Linting
 

@@ -17,7 +17,10 @@ module.exports = merge(common, {
         sourceMap: true
       }),
       new OptimizeCssAssetsPlugin({})
-    ]
+    ],
+    splitChunks: {
+      chunks: 'all'
+    }
   },
   plugins: [
     new MiniCssExtractPlugin({

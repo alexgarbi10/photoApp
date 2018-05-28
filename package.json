@@ -65,7 +65,7 @@
     "webpack-merge": "^4.1.2"
   },
   "scripts": {
-    "front:dev": "webpack-dev-server --config ./webpack/webpack.config.dev.js",
+    "front:dev": "webpack-dev-server --config ./webpack/webpack.config.dev.js --open",
     "front:prod": "webpack --config ./webpack/webpack.config.prod.js",
     "back:dev": "sails lift",
     "back:prod": "forever start app.js --append --prod",
