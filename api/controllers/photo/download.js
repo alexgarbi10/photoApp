@@ -9,16 +9,19 @@ module.exports = async function fetch(req, res) {
   // Get params
   const id = req.param('id');
 
+  // S3 configuration params
+  const { active, key, secret, bucket } = sails.config.s3;
+  const skipperDisk = require('skipper-disk');
+  const skipperS3 = require('skipper-s3');
+
   // Configure Skipper
   var uploadConfig = {
-    // adapter: require('skipper-s3'), // Skipper custom adapter
-    // key: 'S3 Key', // S3 Key
-    // secret: 'S3 Secret', // S3 Secret
-    // bucket: 'Bucket Name' // S3 bucket name
+    key: key,
+    secret: secret,
+    bucket: bucket
   };
 
-  const SkipperDisk = require('skipper-disk');
-  const fileAdapter = SkipperDisk(uploadConfig);
+  const fileAdapter = active ? skipperS3(uploadConfig) : skipperDisk(uploadConfig);
 
   // Parameter validations
   if (!id) {
