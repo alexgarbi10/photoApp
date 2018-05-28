@@ -11,11 +11,11 @@
 * [Changelog](#user-content-changelog)
 
 # Description
-
 Simple app for uploading/displaying a list of photos.
-Frontend: React 16.x, Bootstrap 3.x and Webpack 4.x for ES6 support
-Backend: Sails.js v1, Node.js 8.x
-App URL: http://ec2-18-218-105-143.us-east-2.compute.amazonaws.com/
+
+- Frontend: React 16.x, Bootstrap 3.x and Webpack 4.x for ES6 support
+- Backend: Sails.js v1, Node.js 8.x
+- App URL: http://ec2-18-218-105-143.us-east-2.compute.amazonaws.com/
 
 # Features
 - Sails.js v1
