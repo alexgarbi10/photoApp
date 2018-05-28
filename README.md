@@ -28,7 +28,8 @@ Simple app for uploading/displaying a list of photos.
 - Linting (eslint and eslint-plugin-react)
 - Skipper-disk and Skipper-s3 configuration
 - Hosted on EC2 AWS instance
-- Using RDS MySQL AWS instance for the database
+- Using RDS AWS MySQL instance for the database
+- Using S3 storage for uploading/downloading images
 
 # Next features
 - Tests (Mocha for backend and Jest for frontend)
