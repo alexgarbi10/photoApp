@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { Button, Panel } from 'react-bootstrap';
 import { asyncRequest } from '../../api';
+import { formatDate } from '../../utilities/date';
 
 export default class PhotoPanel extends Component {
   constructor(props) {
@@ -89,7 +90,7 @@ export default class PhotoPanel extends Component {
           >
           </img>
           <p className='created-at'>
-            File created @: { item.createdAt }
+            File created @: { formatDate(item.createdAt) }
           </p>
           <p className='description'>
             { item.description }

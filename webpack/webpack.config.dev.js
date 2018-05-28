@@ -17,7 +17,11 @@ module.exports = merge(common, {
   plugins: [
     new CleanWebpackPlugin(['tmp/public']),
     new webpack.NamedModulesPlugin(),
-    new webpack.HotModuleReplacementPlugin()
+    new webpack.HotModuleReplacementPlugin(),
+    new webpack.DefinePlugin({
+      'process.env.NODE_ENV': JSON.stringify('development'),
+      'SERVICE_URL': JSON.stringify('http://localhost:1337')
+    })
   ],
   module: {
     rules: [

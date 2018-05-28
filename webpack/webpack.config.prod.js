@@ -31,7 +31,8 @@ module.exports = merge(common, {
       sourceMap: true
     }),
     new webpack.DefinePlugin({
-      'process.env.NODE_ENV': JSON.stringify('production')
+      'process.env.NODE_ENV': JSON.stringify('production'),
+      'SERVICE_URL': JSON.stringify('http://ec2-18-218-105-143.us-east-2.compute.amazonaws.com:1337')
     })
   ],
   module: {

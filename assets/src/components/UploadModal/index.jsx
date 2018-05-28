@@ -51,7 +51,7 @@ export default class UploadModal extends Component {
   }
 
   onFileUpload() {
-    const { handleError, handleMessage } = this.props;
+    const { handleError, handleMessage, handleSuccess } = this.props;
     const { name, description, file } = this.state;
 
     var data = new FormData(file);
@@ -65,11 +65,12 @@ export default class UploadModal extends Component {
       body: data,
       cType: 'multipart/form-data'
     }).then(body => {
-      this.onClose();
       handleMessage(body.message);
-    }).catch(error => {
+      handleSuccess();
       this.onClose();
+    }).catch(error => {
       handleError(error.message);
+      this.onClose();
     });
   }
 
@@ -119,5 +120,6 @@ UploadModal.propTypes = {
   show: PropTypes.bool.isRequired,
   handleClose: PropTypes.func.isRequired,
   handleError: PropTypes.func.isRequired,
-  handleMessage: PropTypes.func.isRequired
+  handleMessage: PropTypes.func.isRequired,
+  handleSuccess: PropTypes.func.isRequired
 };

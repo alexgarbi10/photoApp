@@ -28,6 +28,7 @@ export default class App extends Component {
     this.onAlertErrorClose = this.onAlertErrorClose.bind(this);
     this.onDetailOpen = this.onDetailOpen.bind(this);
     this.onDetailClose = this.onDetailClose.bind(this);
+    this.getPhotoList = this.getPhotoList.bind(this);
   }
 
   componentDidMount() {
@@ -131,6 +132,7 @@ export default class App extends Component {
           handleClose={ this.onModalClose }
           handleError={ this.onError }
           handleMessage={ this.onMessage }
+          handleSuccess={ this.getPhotoList }
         />
 
         <PhotoList
